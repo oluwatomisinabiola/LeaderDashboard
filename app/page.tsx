@@ -1,103 +1,108 @@
-import Image from "next/image";
+const leaderboardData = [
+  { id: 1, name: "Haylin Diaz", points: 15420 },
+  { id: 2, name: "Jennifer Ayissi", points: 14890 },
+  { id: 3, name: "Bifuh Ngongalah", points: 13675 },
+  { id: 4, name: "Sarah Johnson", points: 12940 },
+  { id: 5, name: "Michael Chen", points: 11825 },
+  { id: 6, name: "Emily Davis", points: 10560 },
+  { id: 7, name: "Alex Rodriguez", points: 9875 },
+  { id: 8, name: "Lisa Wang", points: 8920 },
+];
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-50 p-8">
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">Hey, Oluwatomisin!</h1>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {/* Left Column - Leaderboard */}
+        <div className="lg:col-span-2">
+          <div className="bg-white border border-gray-200 rounded-2xl p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Points Leaderboard</h3>
+            <p className="text-sm text-gray-600 mb-6">
+              Members ranked by total points earned from completing activities.
+            </p>
+            
+            <div className="space-y-4">
+              {leaderboardData.map((member, index) => (
+                <div key={member.id} className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <span className="text-lg font-semibold text-gray-700 w-6">
+                      {index + 1}
+                    </span>
+                    <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                      <span className="text-sm font-medium text-gray-700">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">{member.name}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-semibold text-gray-900">{member.points.toLocaleString()} Points</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Right Column - Dashboard Cards */}
+        <div className="space-y-6">
+          {/* Active Status Card */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Active Status</h3>
+            <p className="text-sm text-gray-600 mb-6">
+              You are considered active in a week if you have either sent a Slack message or reacted to a Slack message, in that week.
+            </p>
+            
+            <div className="grid grid-cols-2 gap-6 mb-6">
+              <div>
+                <h4 className="font-medium text-gray-900 mb-2">This Week (8/24 - 8/30)</h4>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="text-green-600 font-medium">Active</span>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-900 mb-2">Last 16 Weeks</h4>
+                <div className="grid grid-cols-4 gap-1">
+                  {[...Array(16)].map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`w-4 h-4 rounded-sm ${[3, 8].includes(i) ? 'bg-red-500' : 'bg-green-500'}`}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats Cards */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white border border-gray-200 rounded-2xl p-4">
+              <h4 className="text-sm font-medium text-gray-600 mb-1">Member #</h4>
+              <p className="text-2xl font-bold text-gray-900">16210</p>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-2xl p-4">
+              <h4 className="text-sm font-medium text-gray-600 mb-1">Total Members</h4>
+              <p className="text-2xl font-bold text-gray-900">16,945</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white border border-gray-200 rounded-2xl p-4">
+              <h4 className="text-sm font-medium text-gray-600 mb-1">Events Attended</h4>
+              <p className="text-2xl font-bold text-gray-900">1</p>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-2xl p-4">
+              <h4 className="text-sm font-medium text-gray-600 mb-1">Messages Sent</h4>
+              <p className="text-2xl font-bold text-gray-900">46</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
